@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AddTask from "../components/AddTask";
 import { useParams } from "react-router";
 import events from "../events.json";
+import Map from "../components/Map";
 
 import TaskCard from "../components/TaskCard";
 
@@ -13,6 +14,8 @@ function SportDetailsPage(props) {
   const [sport, setSport] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
+
+
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -39,10 +42,15 @@ function SportDetailsPage(props) {
           <p>Players: {sport.players}</p>
           <p>Time: {sport.time}</p>
           <p>Price: {sport.price}</p>
+          <Map venue={{latitude: 41.384, longitude: 2.122}}></Map>
 
           <Link to={`/`}>
             <button>Home</button>
           </Link>
+          <Link to={`/confirmation`}>
+            <button>Join game</button>
+          </Link>
+          
         </>
       )}
     </div>

@@ -7,10 +7,17 @@ import SportsListPage from "./pages/SportsList";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import SportDetailsPage from "./pages/SportDetailsPage"
+import mapboxgl from "mapbox-gl";
+
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 
+
 function App() {
+
+
+
+
   return (
     <div className="App">
       <Navbar />
