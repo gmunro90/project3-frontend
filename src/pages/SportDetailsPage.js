@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+//import axios from "axios";
 import { Link } from "react-router-dom";
 import AddTask from "../components/AddTask";
 import { useParams } from "react-router";
+import events from "../events.json"
+
 
 import TaskCard from "../components/TaskCard";
 
@@ -10,6 +12,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 function SportDetailsPage(props) {
   const [sport, setSport] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
   const {id: sportId} = useParams()
 
   // const getProject = () => {
@@ -17,34 +20,38 @@ function SportDetailsPage(props) {
   //   const storedToken = localStorage.getItem("authToken");
 
   //   // Send the token through the request "Authorization" Headers
-  //   axios
-  //     .get(`${API_URI}/api/projects/${projectId}`, {
-  //       headers: { Authorization: `Bearer ${storedToken}` },
-  //     })
-  //     .then((response) => {
-  //       const oneProject = response.data;
-  //       setProject(oneProject);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+ 
 
-  // useEffect(() => {
-  //   getProject();
-  // }, []);
+  useEffect(() => {
+    const filteredSport = events.filter(event=> event._id === sportId)
+    setSport(filteredSport)
+    setIsLoading(false)
+
+
+  }, [])
+  console.log(sport)
 
   return (
-    <div className="ProjectDetails">
-      {sport && (
-        <>
-          <h1>{sportId}</h1>
-          <p>{sport.location}</p>
-        </>
-      )}
+    {isLoading ? '<p> Data is loading </p>' : (
+      <div className="SportDetails">
+      
+      <>
+        <h1>{sportId}</h1>
+        <p>{sport[0].sport}</p>
+        <p>Location: {sport[0].location}</p>
+        <p>Players: {sport[0].players}</p>
+        <p>Time: {sport.time}</p>
+        <p>Price: {sport.price}</p>
+      </>
+    
 
-      <Link to={`/`}>
-        <button>Home</button>
-      </Link>
-    </div>
+    <Link to={`/`}>
+      <button>Home</button>
+    </Link>
+  </div>
+
+    )}
+    
   );
 }
 

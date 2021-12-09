@@ -15,7 +15,6 @@ function SportsListPage() {
 
   const {search} = useLocation();
   const {sport} = queryString.parse(search)
-  const {id: sportId} = useParams()
   
   useEffect(() => {
     const filteredSport = events.filter(event=> event.sport === sport)
