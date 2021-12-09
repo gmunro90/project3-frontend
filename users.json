@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Colt",
+        "email": "coltsteele@gmail.com",
+        "password": "colt",
+        "profile_image": "https://pbs.twimg.com/profile_images/651500933050818560/fG3lG6kz_400x400.jpg"
+
+    },
+    {
+        "name": "Frank",
+        "email": "frankgmail.com",
+        "password": "frank",
+        "profile_image": "https://pbs.twimg.com/profile_images/651500933050818560/fG3lG6kz_400x400.jpg"
+
+    },
+    {
+        "name": "John",
+        "email": "john@gmail.com",
+        "password": "john",
+        "profile_image": "https://pbs.twimg.com/profile_images/651500933050818560/fG3lG6kz_400x400.jpg"
+
+    },
+    {
+        "name": "Bob",
+        "email": "bob@gmail.com",
+        "password": "bob",
+        "profile_image": "https://pbs.twimg.com/profile_images/651500933050818560/fG3lG6kz_400x400.jpg"
+
+    },
+    {
+        "name": "Fred",
+        "email": "fred@gmail.com",
+        "password": "fred",
+        "profile_image": "https://pbs.twimg.com/profile_images/651500933050818560/fG3lG6kz_400x400.jpg"
+
+    }
+]
