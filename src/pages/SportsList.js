@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddProject from "../components/AddProject";
 import ProjectCard from "../components/ProjectCard";
-import sportsData from ".."
 import queryString from "query-string"
 import { useLocation } from "react-router";
 import events from "../events.json"
+import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -14,6 +15,7 @@ function SportsListPage() {
 
   const {search} = useLocation();
   const {sport} = queryString.parse(search)
+  const {id: sportId} = useParams()
   
   useEffect(() => {
     const filteredSport = events.filter(event=> event.sport === sport)
@@ -40,14 +42,15 @@ function SportsListPage() {
   //   getAllSports();
   // }, []);
 
+  console.log(sport)
   return (
     <div className="SportsListPage">
       
       {sportList.map((sport) =>  {
         return (
           <>
-      <h2>{sport.sport}</h2>
-      <p>{sport.players}</p>
+      <Link to ={`sports/${sport._id}`}><h2>{sport.sport}</h2></Link>
+      <p>Players: {sport.players}</p>
       </>
       )
       })}

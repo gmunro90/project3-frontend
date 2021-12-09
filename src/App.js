@@ -2,11 +2,12 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage";
+import ProjectDetailsPage from "./pages/SportDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import SportsListPage from "./pages/SportsList";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import SportDetailsPage from "./pages/SportDetailsPage"
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 
@@ -23,7 +24,7 @@ function App() {
 
         {/* 👇 UPDATE THE EXISTING ROUTES 👇  */}
         <PrivateRoute exact path="/projects" component={SportsListPage} />
-        <PrivateRoute exact path="/projects/:id" component={ProjectDetailsPage} />
+        <Route exact path="/sports/:id" component={SportDetailsPage} />
         <PrivateRoute exact path="/projects/edit/:id" component={EditProjectPage} />
         
         <AnonRoute exact path="/signup" component={SignupPage} />

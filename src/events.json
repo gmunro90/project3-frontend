@@ -5,7 +5,8 @@
     "user": "6197cbef8b6ed25f25dcc748",
     "players": 10,
     "time": 15.30,
-    "price": 7
+    "price": 7,
+    "_id": "6197cbef8b6ed25f25dcc748"
 },
 { 
     "sport": "football",
@@ -13,7 +14,9 @@
  "user": "6197cbef8b6ed25f25dcc748",
  "players": 10,
  "time": 15.30,
- "price": 7
+ "price": 7,
+ "_id": "6197cbef8b6ed25f25dcc747"
+
 },
 { 
     "sport": "volleyball",
@@ -38,5 +41,14 @@
  "players": 2,
  "time": 15.30,
  "price": 5
+},
+{ 
+    "sport": "basketball",
+ "location":  "6197cbef8b6ed25f25dcc748",
+ "user": "6197cbef8b6ed25f25dcc748",
+ "players": 10,
+ "time": 15.30,
+ "price": 5
 }
+
 ]
