@@ -11,6 +11,7 @@ import mapboxgl from "mapbox-gl";
 
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
+import Venues from "./pages/Venues";
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
       <Switch>      
         <Route exact path="/" component={HomePage} />
         <Route exact path="/search" component={SportsListPage} />
+        <Route exact path="/venues" component={Venues} />
+
 
 
 

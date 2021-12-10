@@ -12,6 +12,8 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 function SportsListPage() {
   const [sportList, setSportList] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const {search} = useLocation();
   const {sport} = queryString.parse(search)
@@ -22,9 +24,11 @@ function SportsListPage() {
       .then((response) => {
         console.log('response.data', response.data);
         setSportList(response.data);
+        // setIsLoading(false)
+        console.log("sportList", sportList)
       })
       .catch(console.log);
-  }, []);
+  }, [sport]);
   
   // useEffect(() => {
   //   const filteredSport = sportList.filter(event=> event.sport === sport)
