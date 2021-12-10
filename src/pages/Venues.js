@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Map from "../components/Map";
+import loader from  "../running-man.gif"
 
 export default function Venues() {
   const [venueList, setVenueList] = useState([]);
@@ -26,7 +27,10 @@ export default function Venues() {
     <div>
       <h2>Venues</h2>
       {isLoading ? (
-          <p>Data is loading...</p>
+          <>
+          <img src={loader} alt="loading..."  width="130" height="130"/>
+          <p>Loading...</p>
+          </>
       ) : (
           <>
       {venueList.map((venue) => {
