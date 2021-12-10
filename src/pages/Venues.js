@@ -5,6 +5,8 @@ import Map from "../components/Map";
 
 export default function Venues() {
   const [venueList, setVenueList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const API_URI = process.env.REACT_APP_API_URI;
 
@@ -14,7 +16,7 @@ export default function Venues() {
       .then((response) => {
         console.log("response.data.venues", response.data);
         setVenueList(response.data);
-        // setIsLoading(false)
+         setIsLoading(false)
         console.log("venues", venueList);
       })
       .catch(console.log);
@@ -23,6 +25,10 @@ export default function Venues() {
   return (
     <div>
       <h2>Venues</h2>
+      {isLoading ? (
+          <p>Data is loading...</p>
+      ) : (
+          <>
       {venueList.map((venue) => {
         return (
           <>
@@ -30,9 +36,13 @@ export default function Venues() {
             <p>Location: {venue.location.type}</p>
             <p>Description: {venue.description}</p>
             <Map venue={{latitude: venue.location.coordinates[0], longitude: venue.location.coordinates[1]}}></Map>
-          </>
-        );
-      })}
+            </>
+          
+          )}
+          
+        )
+      }
+      </>)}
     </div>
-  );
+  )
 }
