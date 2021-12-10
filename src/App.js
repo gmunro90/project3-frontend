@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import SportDetailsPage from "./pages/SportDetailsPage"
 import mapboxgl from "mapbox-gl";
+import NewEvent from "./pages/newEvent";
 
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
@@ -35,6 +36,8 @@ function App() {
         <PrivateRoute exact path="/projects" component={SportsListPage} />
         <Route exact path="/sports/:id" component={SportDetailsPage} />
         <PrivateRoute exact path="/projects/edit/:id" component={EditProjectPage} />
+        <PrivateRoute exact path="/new" component={NewEvent} />
+
         
         <AnonRoute exact path="/signup" component={SignupPage} />
         <AnonRoute exact path="/login" component={LoginPage} />

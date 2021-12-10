@@ -22,14 +22,18 @@ function HomePage() {
       Volleyball
     </Link>
     </div>
-    
+
     <Link to={`/search?sport=${sport[2]}`}>
       Basketball
     </Link>
     <div>
       <Link to={"/venues"}>VENUES</Link>
     </div>
+    <div>
+      <Link to={"/new"}>ADD</Link>
     </div>
+    </div>
+
   );
 }
 
