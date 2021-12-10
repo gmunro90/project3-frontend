@@ -12,6 +12,8 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 function SportsListPage() {
   const [sportList, setSportList] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const {search} = useLocation();
   const {sport} = queryString.parse(search)
@@ -22,9 +24,12 @@ function SportsListPage() {
       .then((response) => {
         console.log('response.data', response.data);
         setSportList(response.data);
+        const filteredSport = response.data.filter(event=> event.sport === sport)
+        setSportList(filteredSport)
+        setIsLoading(false)
       })
       .catch(console.log);
-  }, []);
+  }, [sport]);
   
   // useEffect(() => {
   //   const filteredSport = sportList.filter(event=> event.sport === sport)
@@ -54,15 +59,20 @@ function SportsListPage() {
   console.log(sport)
   return (
     <div className="SportsListPage">
-      
+    {isLoading ? (
+      <p> Data is loading...</p>
+    ) : (
+      <>
       {sportList.map((sport) =>  {
         return (
           <>
       <Link to ={`sports/${sport._id}`}><h2>{sport.sport}</h2></Link>
       <p>Players: {sport.players}</p>
       </>
+      )}
       )
-      })}
+      }
+      </>)}
       </div>
 
 )

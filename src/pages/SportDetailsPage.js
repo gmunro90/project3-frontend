@@ -27,13 +27,14 @@ function SportDetailsPage(props) {
     axios
       .get(`${API_URI}/api/event/${sportId}`)
       .then((response) => {
-        console.log('response.data', response.data.sport);
+        console.log('response.data', response.data);
         setSport(response.data);
          setIsLoading(false);
 
       })
       .catch(console.log);
   }, []);
+  
 
 
 
@@ -43,20 +44,19 @@ function SportDetailsPage(props) {
   //   setIsLoading(false);
   // }, []);
   // console.log(sport);
-
+console.log("sport", sport)
   return (
     <div className="SportDetails">
       {isLoading ? (
         <p> Data is loading </p>
       ) : (
         <>
-          <h1>{sportId}</h1>
-          <p>{sport.sport}</p>
+          <h1>{sport.sport}</h1>
           <p>Location: {sport.location}</p>
           <p>Players: {sport.players}</p>
           <p>Time: {sport.time}</p>
           <p>Price: {sport.price}</p>
-          <Map venue={{latitude: 41.384, longitude: 2.122}}></Map>
+          <Map venue={{latitude: sport.venue.location.coordinates[0], longitude: sport.venue.location.coordinates[1]}}></Map>
 
           <Link to={`/`}>
             <button>Home</button>
