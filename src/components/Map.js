@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+//import "mapbox-gl/dist/mapbox-gl.css";
 
 const REACT_APP_MAPBOX_TOKEN = `pk.eyJ1IjoiY29saW5jaGFkd2ljayIsImEiOiJja3d6MjltODMwMmowMnJxbDE4Z3hzcGluIn0.iF3HrtD4LzaIc0yr41oU0A`;
 

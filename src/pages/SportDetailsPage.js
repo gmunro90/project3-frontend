@@ -5,6 +5,7 @@ import AddTask from "../components/AddTask";
 import { useParams } from "react-router";
 import events from "../events.json";
 import Map from "../components/Map";
+import axios from "axios";
 
 import TaskCard from "../components/TaskCard";
 
@@ -22,13 +23,26 @@ function SportDetailsPage(props) {
   //   const storedToken = localStorage.getItem("authToken");
 
   //   // Send the token through the request "Authorization" Headers
-
   useEffect(() => {
-    const filteredSport = events.filter((event) => event._id === sportId);
-    setSport(filteredSport[0]);
-    setIsLoading(false);
+    axios
+      .get(`${API_URI}/api/event/${sportId}`)
+      .then((response) => {
+        console.log('response.data', response.data.sport);
+        setSport(response.data);
+         setIsLoading(false);
+
+      })
+      .catch(console.log);
   }, []);
-  console.log(sport);
+
+
+
+  // useEffect(() => {
+  //   const filteredSport = events.filter((event) => event._id === sportId);
+  //   setSport(filteredSport[0]);
+  //   setIsLoading(false);
+  // }, []);
+  // console.log(sport);
 
   return (
     <div className="SportDetails">
