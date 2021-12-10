@@ -15,11 +15,21 @@ function SportsListPage() {
 
   const {search} = useLocation();
   const {sport} = queryString.parse(search)
-  
+
   useEffect(() => {
-    const filteredSport = events.filter(event=> event.sport === sport)
-    setSportList(filteredSport)
-  }, [sport])
+    axios
+      .get(`${API_URI}/api/event`)
+      .then((response) => {
+        console.log('response.data', response.data);
+        setSportList(response.data);
+      })
+      .catch(console.log);
+  }, []);
+  
+  // useEffect(() => {
+  //   const filteredSport = sportList.filter(event=> event.sport === sport)
+  //   setSportList(filteredSport)
+  // }, [sport])
 
 
   // const getAllSports = () => {
