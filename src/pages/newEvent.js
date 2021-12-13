@@ -50,7 +50,7 @@ export default function NewEvent() {
         }
       )
       .then((respnse) => {
-        setFormState({});
+        // setFormState({});
         history.push("/");
       })
       .catch(console.log);
