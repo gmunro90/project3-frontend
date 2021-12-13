@@ -39,6 +39,8 @@ export default function Venues() {
             <h3>Name: {venue.name}</h3>
             <p>Location: {venue.location.type}</p>
             <p>Description: {venue.description}</p>
+            <p>Description: {venue.location.barrio}</p>
+
             <Map venue={{latitude: venue.location.coordinates[0], longitude: venue.location.coordinates[1]}}></Map>
             </>
           

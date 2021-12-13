@@ -1,13 +1,11 @@
-import { useState, useEffect } from "react";
-//import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import AddTask from "../components/AddTask";
 import { useParams } from "react-router";
-import events from "../events.json";
 import Map from "../components/Map";
 import axios from "axios";
-import TaskCard from "../components/TaskCard";
 import loader from  "../running-man.gif"
+import { AuthContext } from "./../context/auth.context";
+
 
 
 const API_URI = process.env.REACT_APP_API_URI;
@@ -16,6 +14,8 @@ function SportDetailsPage(props) {
   const [sport, setSport] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
+  const { user } = useContext(AuthContext);
+
 
 
 
@@ -36,10 +36,32 @@ function SportDetailsPage(props) {
       })
       .catch(console.log);
   }, []);
+
+  console.log("user", user);
   
 
+function handleSubmit(){
+  const localJWTToken = localStorage.getItem("authToken");
 
 
+
+  axios
+  .put(
+    `${API_URI}/api/join/${sportId}/${user._id}`,
+    { user },
+    {
+      headers: { Authorization: `Bearer ${localJWTToken}` },
+    }
+  )
+  .then((response) => {
+    console.log(response.data)
+    
+  })
+  .catch(console.log);
+}
+
+
+  
   // useEffect(() => {
   //   const filteredSport = events.filter((event) => event._id === sportId);
   //   setSport(filteredSport[0]);
@@ -57,7 +79,7 @@ console.log("sport", sport)
         <>
           <h1>{sport.sport}</h1>
           <p>Location: {sport.location}</p>
-          <p>Players: {sport.players}</p>
+          <p>Players: {sport.players.map((player)=> player.name )}</p>
           <p>Time: {sport.time}</p>
           <p>Price: {sport.price}</p>
           <Map venue={{latitude: sport.venue.location.coordinates[0], longitude: sport.venue.location.coordinates[1]}}></Map>
@@ -66,7 +88,7 @@ console.log("sport", sport)
             <button>Home</button>
           </Link>
           <Link to={`/confirmation`}>
-            <button>Join game</button>
+            <button onClick={handleSubmit}>Join game</button>
           </Link>
           
         </>

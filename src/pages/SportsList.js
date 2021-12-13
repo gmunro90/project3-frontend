@@ -1,42 +1,39 @@
-import { useState, useEffect } from "react";
+ 
+ import { useState, useEffect } from "react";
 import axios from "axios";
-import AddProject from "../components/AddProject";
-import ProjectCard from "../components/ProjectCard";
-import queryString from "query-string"
+import queryString from "query-string";
 import { useLocation } from "react-router";
-import events from "../events.json"
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
+import loader from "../running-man.gif";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
 function SportsListPage() {
-  const [sportList, setSportList] = useState([])
+  const [sportList, setSportList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-
-  const {search} = useLocation();
-  const {sport} = queryString.parse(search)
+  const { search } = useLocation();
+  const { sport } = queryString.parse(search);
 
   useEffect(() => {
     axios
       .get(`${API_URI}/api/event`)
       .then((response) => {
-        console.log('response.data', response.data);
+        console.log("response.data", response.data);
         setSportList(response.data);
         const filteredSport = response.data.filter(event=> event.sport === sport)
         setSportList(filteredSport)
-        // setIsLoading(false)
+         setIsLoading(false)
         console.log("sportList", sportList)
       })
       .catch(console.log);
   }, [sport]);
-  
-  // useEffect(() => {
-   //const filteredSport = sportList.filter(event=> event.sport === sport)
+
+  // useEffect(() => { 
+  //const filteredSport = sportList.filter(event=> event.sport === sport)
   //   setSportList(filteredSport)
   // }, [sport])
-
 
   // const getAllSports = () => {
   //   // Get the token from the localStorage
@@ -56,21 +53,34 @@ function SportsListPage() {
   // useEffect(() => {
   //   getAllSports();
   // }, []);
+  console.log("filtered", sportList);
 
-  console.log(sport)
   return (
     <div className="SportsListPage">
-      
-      {sportList.map((sport) =>  {
-        return (
-          <>
-      <Link to ={`sports/${sport._id}`}><h2>{sport.sport}</h2></Link>
-      <p>Players: {sport.players}</p>
-      </>
-      )
-      })}
-      </div>
+      {isLoading ? (
+        <>
+          <img src={loader} alt="loading..." width="130" height="130" />
+          <p>Loading...</p>
+        </>
+      ) : (
+        <>
+          {sportList.map((sport) => {
+            console.log("sport", sport);
+            console.log("players", sportList)
 
-)
+            return (
+              <>
+                <Link to={`sports/${sport._id}`}>
+                  <h2>{sport.sport} {sport.venue.location.barrio} </h2>
+                </Link>
+                <p>Players: {sport.players}</p>
+                <p>{sport.venue.location.barrio}</p>
+              </>
+            );
+          })}
+        </>
+      )}
+    </div>
+  );
 }
 export default SportsListPage;
