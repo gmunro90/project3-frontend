@@ -9,10 +9,10 @@ import LoginPage from "./pages/LoginPage";
 import SportDetailsPage from "./pages/SportDetailsPage"
 import mapboxgl from "mapbox-gl";
 import NewEvent from "./pages/newEvent";
-
 import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 import Venues from "./pages/Venues";
+import ProfilePage from "./pages/ProfilePage";
 
 
 function App() {
@@ -28,6 +28,9 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/search" component={SportsListPage} />
         <Route exact path="/venues" component={Venues} />
+        <PrivateRoute exact path="/profile" component={ProfilePage} />
+
+        
 
 
 

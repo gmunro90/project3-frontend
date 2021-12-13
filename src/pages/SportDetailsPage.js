@@ -6,8 +6,9 @@ import { useParams } from "react-router";
 import events from "../events.json";
 import Map from "../components/Map";
 import axios from "axios";
-
 import TaskCard from "../components/TaskCard";
+import loader from  "../running-man.gif"
+
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -15,6 +16,7 @@ function SportDetailsPage(props) {
   const [sport, setSport] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
+
 
 
 
@@ -48,8 +50,10 @@ console.log("sport", sport)
   return (
     <div className="SportDetails">
       {isLoading ? (
-        <p> Data is loading </p>
-      ) : (
+        <>
+        <img src={loader} alt="loading..."  width="130" height="130"/>
+          <p>Loading...</p>  
+          </>    ) : (
         <>
           <h1>{sport.sport}</h1>
           <p>Location: {sport.location}</p>

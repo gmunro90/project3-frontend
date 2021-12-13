@@ -7,7 +7,7 @@ import Venues from "./Venues";
 
 
 function HomePage() {
-  const sport = ["Football", "Beach Volleyball", "Basketball", "Table-Tennis", "Tennis", "Padel", "Yoga", "Hiking"]
+  const sport = ["Football", "Beach Volleyball", "Basketball", "Table-Tennis", "Tennis", "Padel", "Yoga", "Accessible", "Individual"]
 
   return (
     <div>
@@ -50,7 +50,12 @@ Table-Tennis
     </div>
     <div>
     <Link to={`/search?sport=${sport[7]}`}>
-    Hiking
+    Accessible
+    </Link>
+    </div>
+    <div>
+    <Link to={`/search?sport=${sport[8]}`}>
+    Individual
     </Link>
     </div>
     

@@ -26,13 +26,14 @@ function SportsListPage() {
         setSportList(response.data);
         const filteredSport = response.data.filter(event=> event.sport === sport)
         setSportList(filteredSport)
-        setIsLoading(false)
+        // setIsLoading(false)
+        console.log("sportList", sportList)
       })
       .catch(console.log);
   }, [sport]);
   
   // useEffect(() => {
-  //   const filteredSport = sportList.filter(event=> event.sport === sport)
+   //const filteredSport = sportList.filter(event=> event.sport === sport)
   //   setSportList(filteredSport)
   // }, [sport])
 
@@ -59,20 +60,15 @@ function SportsListPage() {
   console.log(sport)
   return (
     <div className="SportsListPage">
-    {isLoading ? (
-      <p> Data is loading...</p>
-    ) : (
-      <>
+      
       {sportList.map((sport) =>  {
         return (
           <>
       <Link to ={`sports/${sport._id}`}><h2>{sport.sport}</h2></Link>
       <p>Players: {sport.players}</p>
       </>
-      )}
       )
-      }
-      </>)}
+      })}
       </div>
 
 )
