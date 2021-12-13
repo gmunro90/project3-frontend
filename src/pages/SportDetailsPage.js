@@ -78,7 +78,8 @@ console.log("sport", sport)
           </>    ) : (
         <>
           <h1>{sport.sport}</h1>
-          <p>Location: {sport.location}</p>
+          <p>Location: {sport.venue.location.type}</p>
+          <p>Players: {sport.players.length}/{sport.numberOfPlayers}</p>
           <p>Players: {sport.players.map((player)=> player.name )}</p>
           <p>Time: {sport.time}</p>
           <p>Price: {sport.price}</p>
