@@ -55,6 +55,7 @@ function handleSubmit(){
   )
   .then((response) => {
     console.log(response.data)
+    
   })
   .catch(console.log);
 }
@@ -78,7 +79,7 @@ console.log("sport", sport)
         <>
           <h1>{sport.sport}</h1>
           <p>Location: {sport.location}</p>
-          <p>Players: {sport.players.map((player)=> player.name)}</p>
+          <p>Players: {sport.players.map((player)=> player.name )}</p>
           <p>Time: {sport.time}</p>
           <p>Price: {sport.price}</p>
           <Map venue={{latitude: sport.venue.location.coordinates[0], longitude: sport.venue.location.coordinates[1]}}></Map>

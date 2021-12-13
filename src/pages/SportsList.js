@@ -66,12 +66,14 @@ function SportsListPage() {
         <>
           {sportList.map((sport) => {
             console.log("sport", sport);
+            console.log("players", sportList)
+
             return (
               <>
                 <Link to={`sports/${sport._id}`}>
                   <h2>{sport.sport} {sport.venue.location.barrio} </h2>
                 </Link>
-                <p>Players: {sport.players}</p>
+                <p>Players: {sport.players.map((player)=>player.name)}</p>
                 <p>{sport.venue.location.barrio}</p>
               </>
             );
