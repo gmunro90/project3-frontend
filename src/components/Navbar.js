@@ -13,20 +13,26 @@ function Navbar() {
       <Link to="/">
         <button>Home</button>
       </Link>
--
-      {isLoggedIn
-        ? (<>
-          
-            <button onClick={logOutUser}>Logout</button>
-            <span>{user.name}</span>
-            <Link to="/profile"><button>Profile</button></Link>            
-          </>)
-        : 
-        (<>
-          <Link to="/signup"> <button>Signup</button> </Link>
-          <Link to="/login"> <button>Login</button> </Link>
-        </>)
-      }
+      -
+      {isLoggedIn ? (
+        <>
+          <button onClick={logOutUser}>Logout</button>
+          <Link to="/profile">
+            <button>hello {user.name}</button>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link to="/signup">
+            {" "}
+            <button>Signup</button>{" "}
+          </Link>
+          <Link to="/login">
+            {" "}
+            <button>Login</button>{" "}
+          </Link>
+        </>
+      )}
     </nav>
   );
 }
