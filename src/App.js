@@ -1,6 +1,7 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer"
 import HomePage from "./pages/HomePage";
 import EditProjectPage from "./pages/EditProjectPage";
 import SportsListPage from "./pages/SportsList";
@@ -46,6 +47,7 @@ function App() {
         <AnonRoute exact path="/login" component={LoginPage} />
 
       </Switch>
+      <Footer />
     </div>
   );
 }
