@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 //import axios from "axios";
 import { Link } from "react-router-dom";
 import AddTask from "../components/AddTask";
@@ -8,6 +8,8 @@ import Map from "../components/Map";
 import axios from "axios";
 import TaskCard from "../components/TaskCard";
 import loader from  "../running-man.gif"
+import { AuthContext } from "./../context/auth.context";
+
 
 
 const API_URI = process.env.REACT_APP_API_URI;
@@ -36,6 +38,9 @@ function SportDetailsPage(props) {
       })
       .catch(console.log);
   }, []);
+
+  const { user } = useContext(AuthContext);
+  console.log("user", user);
   
 
 
