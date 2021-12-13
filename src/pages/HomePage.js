@@ -62,9 +62,7 @@ Table-Tennis
     <div>
       <Link to={"/venues"}>VENUES</Link>
     </div>
-    <div>
-      <Link to={"/new"}>ADD</Link>
-    </div>
+   
     </div>
 
   );
