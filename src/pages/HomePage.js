@@ -17,7 +17,7 @@ function HomePage() {
 
   return (
     <>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center ">
         <h1>
           <svg
             className="w-30 pl-10 m-5"
@@ -318,7 +318,10 @@ function HomePage() {
         </div>
       </div>
       <div>
-        <Link to={`/search?sport=${sport[5]}`}>Padel</Link>
+        <Link to={`/search?sport=${sport[5]}`}>
+        
+
+        Padel</Link>
       </div>
       <div className="flex flex-row justify-between m-10">
         <div>
@@ -404,6 +407,7 @@ function HomePage() {
       <div>
         <Link to={"/venues"}>VENUES</Link>
       </div>
+      
     </>
   );
 }
