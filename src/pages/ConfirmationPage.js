@@ -6,7 +6,7 @@ import { AuthContext } from "./../context/auth.context";
 export default function ConfirmationPage() {
   return (
     <div>
-   <p>You have joined the event</p>
+   <p>you have joined this event</p>
     </div>
   );
 }
