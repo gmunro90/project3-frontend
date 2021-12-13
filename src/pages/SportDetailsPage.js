@@ -1,12 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-//import axios from "axios";
 import { Link } from "react-router-dom";
-import AddTask from "../components/AddTask";
 import { useParams } from "react-router";
-import events from "../events.json";
 import Map from "../components/Map";
 import axios from "axios";
-import TaskCard from "../components/TaskCard";
 import loader from  "../running-man.gif"
 import { AuthContext } from "./../context/auth.context";
 
@@ -18,6 +14,8 @@ function SportDetailsPage(props) {
   const [sport, setSport] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
+  const { user } = useContext(AuthContext);
+
 
 
 
@@ -39,10 +37,27 @@ function SportDetailsPage(props) {
       .catch(console.log);
   }, []);
 
-  const { user } = useContext(AuthContext);
   console.log("user", user);
   
 
+function handleSubmit(){
+  const localJWTToken = localStorage.getItem("authToken");
+
+
+
+  axios
+  .put(
+    `${API_URI}/api/join/${sportId}/${user._id}`,
+    { user },
+    {
+      headers: { Authorization: `Bearer ${localJWTToken}` },
+    }
+  )
+  .then((response) => {
+    console.log(response)
+  })
+  .catch(console.log);
+}
 
 
   // useEffect(() => {
@@ -71,7 +86,7 @@ console.log("sport", sport)
             <button>Home</button>
           </Link>
           <Link to={`/confirmation`}>
-            <button>Join game</button>
+            <button onClick={handleSubmit}>Join game</button>
           </Link>
           
         </>
