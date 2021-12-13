@@ -21,12 +21,10 @@ function SportsListPage() {
       .then((response) => {
         console.log("response.data", response.data);
         setSportList(response.data);
-        const filteredSport = response.data.filter(
-          (event) => event.sport === sport
-        );
-        setSportList(filteredSport);
-        setIsLoading(false);
-        console.log("sportList", sportList);
+        const filteredSport = response.data.filter(event=> event.sport === sport)
+        setSportList(filteredSport)
+         setIsLoading(false)
+        console.log("sportList", sportList)
       })
       .catch(console.log);
   }, [sport]);

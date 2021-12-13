@@ -37,6 +37,27 @@ function SportDetailsPage(props) {
       .catch(console.log);
   }, []);
 
+  console.log("user", user);
+  
+
+function handleSubmit(){
+  const localJWTToken = localStorage.getItem("authToken");
+
+
+
+  axios
+  .put(
+    `${API_URI}/api/join/${sportId}/${user._id}`,
+    { user },
+    {
+      headers: { Authorization: `Bearer ${localJWTToken}` },
+    }
+  )
+  .then((response) => {
+    console.log(response)
+  })
+  .catch(console.log);
+}
 
 
   
@@ -66,7 +87,7 @@ console.log("sport", sport)
             <button>Home</button>
           </Link>
           <Link to={`/confirmation`}>
-            <button>Join game</button>
+            <button onClick={handleSubmit}>Join game</button>
           </Link>
           
         </>
