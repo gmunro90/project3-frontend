@@ -71,7 +71,7 @@ function SportsListPage() {
                 <Link to={`sports/${sport._id}`}>
                   <h2>{sport.sport} {sport.venue.location.barrio} </h2>
                 </Link>
-                <p>Players: {sport.players}</p>
+                <p>Players: {sport.players.length}</p>
                 <p>{sport.venue.location.barrio}</p>
               </>
             );
