@@ -1,3 +1,12 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  @import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
   margin: 0;
 }
@@ -36,7 +45,10 @@ nav {
   width: 100%;
   margin-bottom: 15px;
   padding: 5px;
+
 }
+
+
 
 nav li {
   list-style: none;

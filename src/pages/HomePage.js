@@ -4,15 +4,13 @@ import Venues from "./Venues";
 
 
 
-
-
 function HomePage() {
   const sport = ["Football", "Beach Volleyball", "Basketball", "Table-Tennis", "Tennis", "Padel", "Yoga", "Accessible", "Individual"]
 
   return (
     <div>
-      <h1>Sport Buddy</h1>
-      
+      <h1 className="text-red-500">SPORT BUDDY</h1>
+
       <div>
       <Link to={`/search?sport=${sport[0]}`}>
       Football
