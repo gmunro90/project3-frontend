@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
-import uuid from "uuid"
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import uuid from "uuid";
 
 //import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -15,19 +15,19 @@ export default function Map(props) {
     longitude: props.venue.longitude,
     zoom: 13,
   });
+  const [selectedVenue, setselectedVenue] = useState(null);
 
   function makeId(length) {
-    let result           = '';
-    const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
-    for ( let i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
 
-   return result;
-}
-
+    return result;
+  }
 
   return (
     <>
@@ -44,8 +44,29 @@ export default function Map(props) {
           latitude={props.venue.latitude}
           longitude={props.venue.longitude}
         >
-          <img src="../pin.png" alt="pin" width="30" height="25" />
+          <button
+            className="marker-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setselectedVenue(props.venue);
+              console.log(selectedVenue);
+            }}
+          >
+            <img src="../pin.png" alt="pin" width="30" height="25" />
+          </button>
         </Marker>
+        {selectedVenue ? (
+          <Popup
+            latitude={props.venue.latitude}
+            longitude={props.venue.longitude}
+          >
+            <div>
+              <p>{props.venue.name}</p>
+
+              <p>{props.venue.address}</p>
+            </div>
+          </Popup>
+        ) : null}
       </ReactMapGL>
     </>
   );
