@@ -367,7 +367,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[7]}`}>
             <svg
-              className="mb-1"
+              className="mb-1 mt-1 ml-1"
               width="65"
               height="71"
               viewBox="0 0 71 85"
@@ -393,6 +393,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[8]}`}>
             <svg
+              className="mt-1"
               width="65"
               height="72"
               viewBox="0 0 39 85"
