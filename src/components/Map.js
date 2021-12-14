@@ -8,15 +8,13 @@ const REACT_APP_MAPBOX_TOKEN = `pk.eyJ1IjoiY29saW5jaGFkd2ljayIsImEiOiJja3d6MjltO
 
 export default function Map(props) {
   const [viewport, setViewport] = useState({
-    width: 400,
-    height: 400,
+    width: 600,
+    height: 350,
     latitude: props.venue.latitude,
     longitude: props.venue.longitude,
-    zoom: 13,
+    zoom: 15,
   });
   const [selectedVenue, setselectedVenue] = useState(null);
-
-
 
   return (
     <>
@@ -48,12 +46,12 @@ export default function Map(props) {
           <Popup
             latitude={props.venue.latitude}
             longitude={props.venue.longitude}
-            onClose={()=>{
-              setselectedVenue(null)
+            onClose={() => {
+              setselectedVenue(null);
             }}
           >
             <div>
-            <img className="popup-img"src={props.venue.image} alt="picture of venue"/>
+              <img className="popup-img" src={props.venue.image} alt="venue" />
               <h2>{props.venue.name}</h2>
               <p>{props.venue.address}</p>
             </div>

@@ -14,8 +14,13 @@ function SportDetailsPage(props) {
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
   const { user } = useContext(AuthContext);
+<<<<<<< HEAD
   const [message, setMessage] = useState("")
   const [joined, setJoined] = useState(false)
+=======
+  const [message, setMessage] = useState("");
+  const [Joined, setJoined] = useState(false);
+>>>>>>> styling
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -48,8 +53,8 @@ function SportDetailsPage(props) {
       )
       .then((response) => {
         console.log("message", response.data);
-        setMessage(response.data)
-        setJoined(true)
+        setMessage(response.data);
+        setJoined(true);
       })
       .catch(console.log);
   }
@@ -70,37 +75,40 @@ function SportDetailsPage(props) {
         </>
       ) : (
         <>
-          <h1>{sport.sport}</h1>
-          <p>Location: {sport.venue.location.type}</p>
-          <p>
-            Players: {sport.players.length}/{sport.numberOfPlayers}
-          </p>
-          <p>Players: {sport.players.map((player) => player.name)}</p>
-          <p>Time: {sport.time}</p>
-          <p>Price: {sport.price}</p>
-          <Map
+          <img src={sport.venue.image} alt="not found" />
+
+          {/* <Map 
             venue={{
               latitude: sport.venue.location.coordinates[0],
               longitude: sport.venue.location.coordinates[1],
               name: sport.venue.name,
               address: sport.venue.location.type,
               image: sport.venue.image,
-              id: sport._id
+              id: sport._id,
             }}
-          ></Map>
 
-          <Link to={`/`}>
-            <button>Home</button>
-          </Link>
+          ></Map>*/}
+          <h1>
+            {sport.sport}, {sport.venue.location.type}
+          </h1>
+          <p> </p>
+          <p>
+            Attendees {sport.players.length}/{sport.numberOfPlayers}
+          </p>
+          <p>{sport.players.map((player) => player.name)}</p>
+          <p>Time: {sport.time}</p>
+          <p> €{sport.price}</p>
+
           {message === "" ? (
-            <button onClick={handleSubmit}>Join game</button>
-
+            <button
+              className="w-20 mt-5 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md shadow-lg"
+              onClick={handleSubmit}
+            >
+              Join
+            </button>
           ) : (
-
-          <Confirmation message={[message]}></Confirmation>
-
+            <Confirmation message={[message]}></Confirmation>
           )}
-          
         </>
       )}
     </div>
