@@ -59,6 +59,9 @@ export default function Map(props) {
           <Popup
             latitude={props.venue.latitude}
             longitude={props.venue.longitude}
+            onClose={()=>{
+              setselectedVenue(null)
+            }}
           >
             <div>
               <p>{props.venue.name}</p>
