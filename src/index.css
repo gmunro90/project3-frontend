@@ -41,6 +41,10 @@ a {
   color: black;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 button,
 select {
   padding: 5px 10px;
@@ -67,7 +71,7 @@ footer {
   bottom: 0 !important;
   background: #5f9932;
   color: white;
-  width: 100%;
+  width: 100vw;
 }
 
 .card {
@@ -134,7 +138,7 @@ footer {
   background-color: #dfeef9;
 }
 
-.marker-btn img {
+/*.marker-btn img {
   width: 50px;
   height: 40px;
-}
+}*/
