@@ -416,7 +416,7 @@ function HomePage() {
       <div>
         <Link to={"/venues"}>VENUES</Link>
       </div>
-    </>
+     </>
   );
 }
 
