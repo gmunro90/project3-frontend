@@ -13,14 +13,14 @@ function Footer() {
         </Link>
         <Link to="/new">
           <button>
-            <img className="mb-2" src="/assets/+.png" alt="plus-sign" />
+            <img className="mb-1 mt-1" src="/assets/+.png" alt="plus-sign" />
             <div className="text-white">Add</div>
           </button>
         </Link>
         <Link to="/profile">
           <button>
             <img
-              className="mb-1 ml-1"
+              className="mb-1 ml-2"
               src="/assets/coolicon.png"
               alt="profile-icon"
             />

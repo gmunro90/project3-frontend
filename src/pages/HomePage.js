@@ -146,7 +146,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[4]}`}>
             <svg
-              className="mb-2"
+              className="mb-2 mr-5"
               width="80"
               height="70"
               viewBox="0 0 84 75"
@@ -318,7 +318,7 @@ function HomePage() {
                 fill="#5F9931"
               />
             </svg>
-            Tennis
+            <div className="mr-4"> Tennis </div>
           </Link>
         </div>
 
@@ -367,7 +367,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[7]}`}>
             <svg
-              className="mb-1"
+              className="mb-1 mt-1 ml-1"
               width="65"
               height="71"
               viewBox="0 0 71 85"
@@ -393,6 +393,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[8]}`}>
             <svg
+              className="mt-1"
               width="65"
               height="72"
               viewBox="0 0 39 85"
@@ -415,7 +416,7 @@ function HomePage() {
       <div>
         <Link to={"/venues"}>VENUES</Link>
       </div>
-    </>
+     </>
   );
 }
 
