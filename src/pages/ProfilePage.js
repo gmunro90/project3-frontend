@@ -14,7 +14,6 @@ const handleOnClick= ()=>{
     setUserClicked("MYFRIENDS")
   }
 }
-console.log()
   return (
     <div>
       <button onClick={handleOnClick}>My friends</button>
@@ -23,9 +22,7 @@ console.log()
 
       {userClicked === "MYFRIENDS" && <h1> my friends </h1>}
       {userClicked === "MYGAMES" && <h1> my games </h1>}
-      <Link to="/new">
-        <button>Create event</button>
-      </Link>
+    
     </div>
   );
 }
