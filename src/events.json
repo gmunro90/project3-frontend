@@ -1,0 +1,63 @@
+[
+   { 
+       "sport": "football",
+    "location":  "6197cbef8b6ed25f25dcc748",
+    "user": "6197cbef8b6ed25f25dcc748",
+    "players": 10,
+    "time": 15.30,
+    "price": 7,
+    "_id": "6197cbef8b6ed25f25dcc748"
+},
+{ 
+    "sport": "football",
+ "location":  "6197cbef8b6ed25f25dcc748",
+ "user": "6197cbef8b6ed25f25dcc748",
+ "players": 10,
+ "time": 15.30,
+ "price": 7,
+ "_id": "6197cbef8b6ed25f25dcc747"
+
+},
+{ 
+    "sport": "volleyball",
+ "location":  "6197cbef8b6ed25f25dcc748",
+ "user": "6197cbef8b6ed25f25dcc758",
+ "players": 4,
+ "time": 17.30,
+ "price": 4,
+ "_id": "6197cbef8b6ed25f25dcc741"
+
+ 
+},
+{ 
+    "sport": "padel",
+ "location":  "6197cbef8b6ed25f25dcc748",
+ "user": "6197cbef8b6ed25f25dcc748",
+ "players": 4,
+ "time": 15.30,
+ "price": 6.5,
+ "_id": "6197cbef8b6ed25f25dcc742"
+
+},
+{ 
+    "sport": "tennis",
+ "location":  "6197cbef8b6ed25f25dcc748",
+ "user": "6197cbef8b6ed25f25dcc748",
+ "players": 2,
+ "time": 15.30,
+ "price": 5,
+ "_id": "6197cbef8b6ed25f25dcc743"
+
+},
+{ 
+    "sport": "basketball",
+ "location":  "6197cbef8b6ed25f25dcc748",
+ "user": "6197cbef8b6ed25f25dcc748",
+ "players": 10,
+ "time": 15.30,
+ "price": 5,
+ "_id": "6197cbef8b6ed25f25dcc744"
+
+}
+
+]

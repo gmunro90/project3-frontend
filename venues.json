@@ -1,0 +1,30 @@
+[
+    {
+        "events": ["6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748"],
+        "address": "20 Street, Barcelona",
+        "rating": 8.4,
+        "image": "https://editorial.uefa.com/resources/025c-0f8e775cc072-f99f8b3389ab-1000/the_new_tottenham_hotspur_stadium_has_an_unusual_flexible_playing_surface.jpeg"
+
+    },
+    {
+        "events": ["6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748"],
+        "address": "21 Street, Barcelona",
+        "rating": 3.4,
+        "image": "https://editorial.uefa.com/resources/025c-0f8e775cc072-f99f8b3389ab-1000/the_new_tottenham_hotspur_stadium_has_an_unusual_flexible_playing_surface.jpeg"
+
+    },
+    {
+        "events": ["6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748"],
+        "address": "22 Street, Barcelona",
+        "rating": 9.4,
+        "image": "https://editorial.uefa.com/resources/025c-0f8e775cc072-f99f8b3389ab-1000/the_new_tottenham_hotspur_stadium_has_an_unusual_flexible_playing_surface.jpeg"
+
+    },
+    {
+        "events": ["6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748", "6197cbef8b6ed25f25dcc748"],
+        "address": "23 Street, Barcelona",
+        "rating": 5.4,
+        "image": "https://editorial.uefa.com/resources/025c-0f8e775cc072-f99f8b3389ab-1000/the_new_tottenham_hotspur_stadium_has_an_unusual_flexible_playing_surface.jpeg"
+
+    }
+]
