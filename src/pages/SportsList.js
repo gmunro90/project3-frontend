@@ -77,14 +77,14 @@ function SportsListPage() {
                 <h1>{sport}</h1>
 
                 <button
-                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900"
+                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
                   onClick={handleOnClick}
                 >
                   MAP
                 </button>
 
                 <button
-                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900"
+                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
                   onClick={handleOnClick}
                 >
                   LIST
