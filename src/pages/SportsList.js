@@ -6,15 +6,26 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import loader from "../running-man.gif";
+import MultipleMap from "../components/MultipleMap";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
 function SportsListPage() {
   const [sportList, setSportList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [userClicked, setUserClicked] = useState("list")
   const { search } = useLocation();
   const { sport } = queryString.parse(search);
+
+const handleOnClick = () => {
+  if(userClicked ==="list"){
+    setUserClicked("map")
+  }else if(userClicked === "map"){
+    setUserClicked("list")
+  }
+}
+
+
 
   useEffect(() => {
     axios
@@ -51,16 +62,21 @@ function SportsListPage() {
   // useEffect(() => {
   //   getAllSports();
   // }, []);
-  console.log("filtered", sportList.length);
 
   return (
     <div className="SportsListPage">
+    <button onClick={handleOnClick}>MAP</button>
+    <button onClick={handleOnClick}>LIST</button>
+    
+
       {isLoading ? (
         <>
           <img src={loader} alt="loading..." width="130" height="130" />
           <p>Loading...</p>
         </>
       ) : (
+        <>
+        {userClicked === "list" ? (
         <>
           {sportList.map((sport) => {
 
@@ -76,8 +92,12 @@ function SportsListPage() {
             );
           })}
         </>
+        ) : (
+          <MultipleMap events={[sportList]}></MultipleMap>
+        )}</>
       )}
     </div>
+    
   );
 }
 export default SportsListPage;

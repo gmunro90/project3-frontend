@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
-import uuid from "uuid"
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 //import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -15,18 +14,8 @@ export default function Map(props) {
     longitude: props.venue.longitude,
     zoom: 13,
   });
+  const [selectedVenue, setselectedVenue] = useState(null);
 
-  function makeId(length) {
-    let result           = '';
-    const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for ( let i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-
-   return result;
-}
 
 
   return (
@@ -40,12 +29,36 @@ export default function Map(props) {
         }}
       >
         <Marker
-          key={makeId()}
+          key={props.id}
           latitude={props.venue.latitude}
           longitude={props.venue.longitude}
         >
-          <img src="../pin.png" alt="pin" width="30" height="25" />
+          <button
+            className="marker-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setselectedVenue(props.venue);
+              console.log(selectedVenue);
+            }}
+          >
+            <img src="../pin.png" alt="pin" width="30" height="25" />
+          </button>
         </Marker>
+        {selectedVenue ? (
+          <Popup
+            latitude={props.venue.latitude}
+            longitude={props.venue.longitude}
+            onClose={()=>{
+              setselectedVenue(null)
+            }}
+          >
+            <div>
+            <img className="popup-img"src={props.venue.image} alt="picture of venue"/>
+              <h2>{props.venue.name}</h2>
+              <p>{props.venue.address}</p>
+            </div>
+          </Popup>
+        ) : null}
       </ReactMapGL>
     </>
   );
