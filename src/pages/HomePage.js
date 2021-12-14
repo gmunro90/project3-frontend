@@ -18,10 +18,11 @@ function HomePage() {
   return (
     <>
       <div className="flex flex-col justify-center ">
-        <h1>
+        <div className="flex justify-center mt-10 mb-2">
           <svg
-            className="w-30 pl-10 m-5"
-            viewBox="0 0 300 50"
+            width="202"
+            height="23"
+            viewBox="0 0 202 23"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -30,8 +31,7 @@ function HomePage() {
               fill="black"
             />
           </svg>
-        </h1>
-
+        </div>
         <h2>Let's do some sport together!</h2>
       </div>
 
@@ -39,9 +39,10 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[0]}`}>
             <svg
-              width="62"
-              height="62"
-              viewBox="0 0 62 62"
+              className="mb-2"
+              width="65"
+              height="65"
+              viewBox="0 0 65 65"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -60,9 +61,10 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[1]}`}>
             <svg
-              width="62"
-              height="62"
-              viewBox="0 0 62 62"
+              className="mb-2"
+              width="65"
+              height="65"
+              viewBox="0 0 65 65"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -97,6 +99,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[2]}`}>
             <svg
+              className="mb-2"
               width="65"
               height="65"
               viewBox="0 0 65 65"
@@ -117,9 +120,10 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[3]}`}>
             <svg
-              width="74"
-              height="73"
-              viewBox="0 0 74 73"
+              className="mb-2"
+              width="65"
+              height="65"
+              viewBox="0 0 65 73"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -142,6 +146,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[4]}`}>
             <svg
+              className="mb-2"
               width="84"
               height="75"
               viewBox="0 0 84 75"
@@ -316,20 +321,21 @@ function HomePage() {
             Tennis
           </Link>
         </div>
-      
-      <div>
-        <Link to={`/search?sport=${sport[5]}`}>
-        <img src="/assets/padel.jpg" alt="padel"/>
 
-        Padel</Link>
-      </div>
+        <div>
+          <Link to={`/search?sport=${sport[5]}`}>
+            <img className="w-16 mb-2" src="/assets/padel.jpg" alt="padel" />
+            Padel
+          </Link>
+        </div>
       </div>
       <div className="flex flex-row justify-between m-10">
         <div>
           <Link to={`/search?sport=${sport[6]}`}>
             <svg
-              width="83"
-              height="69"
+              className="mb-3"
+              width="65"
+              height="65"
               viewBox="0 0 83 69"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -361,8 +367,9 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[7]}`}>
             <svg
-              width="71"
-              height="85"
+              className="mb-1"
+              width="65"
+              height="71"
               viewBox="0 0 71 85"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -386,8 +393,8 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[8]}`}>
             <svg
-              width="39"
-              height="85"
+              width="65"
+              height="72"
               viewBox="0 0 39 85"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -408,7 +415,6 @@ function HomePage() {
       <div>
         <Link to={"/venues"}>VENUES</Link>
       </div>
-      
     </>
   );
 }
