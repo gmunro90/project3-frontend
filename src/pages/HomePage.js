@@ -119,7 +119,7 @@ function HomePage() {
       <div className="flex flex-row justify-between m-10">
         <div>
           <Link to={`/search?sport=${sport[3]}`}>
-            <img src="/assets/pingpong.jpg" alt="pingpongbat"/>
+            <img className="mb-2" src="/assets/pingpong.jpg" alt="pingpongbat" />
             Table-Tennis
           </Link>
         </div>
@@ -393,7 +393,7 @@ function HomePage() {
           </Link>
         </div>
       </div>
-     </>
+    </>
   );
 }
 
