@@ -14,7 +14,6 @@ import PrivateRoute from "./components/PrivateRoute";    // <== IMPORT
 import AnonRoute from "./components/AnonRoute";        // <== IMPORT
 import Venues from "./pages/Venues";
 import ProfilePage from "./pages/ProfilePage";
-import ConfirmationPage from "./pages/ConfirmationPage"
 
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
           component={EditProjectPage}
         />
         <PrivateRoute exact path="/new" component={NewEvent} />
-        <PrivateRoute exact path="/confirmation" component={ConfirmationPage} />
 
         <AnonRoute exact path="/signup" component={SignupPage} />
         <AnonRoute exact path="/login" component={LoginPage} />
