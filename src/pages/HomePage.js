@@ -316,12 +316,13 @@ function HomePage() {
             Tennis
           </Link>
         </div>
-      </div>
+      
       <div>
         <Link to={`/search?sport=${sport[5]}`}>
-        
+        <img src="/assets/padel.jpg" alt="padel"/>
 
         Padel</Link>
+      </div>
       </div>
       <div className="flex flex-row justify-between m-10">
         <div>
