@@ -393,12 +393,7 @@ function HomePage() {
           </Link>
         </div>
       </div>
-<<<<<<< HEAD
-    
-     </>
-=======
     </>
->>>>>>> styling
   );
 }
 
