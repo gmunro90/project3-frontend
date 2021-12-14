@@ -1,5 +1,4 @@
- 
- import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import queryString from "query-string";
 import { useLocation } from "react-router";
@@ -21,14 +20,16 @@ function SportsListPage() {
       .get(`${API_URI}/api/event`)
       .then((response) => {
         console.log("response.data", response.data);
-        const filteredSport = response.data.filter(event=> event.sport === sport)
-        setSportList(filteredSport)
-         setIsLoading(false)
+        const filteredSport = response.data.filter(
+          (event) => event.sport === sport
+        );
+        setSportList(filteredSport);
+        setIsLoading(false);
       })
       .catch(console.log);
   }, [sport]);
 
-  // useEffect(() => { 
+  // useEffect(() => {
   //const filteredSport = sportList.filter(event=> event.sport === sport)
   //   setSportList(filteredSport)
   // }, [sport])
@@ -62,16 +63,36 @@ function SportsListPage() {
         </>
       ) : (
         <>
-          {sportList.map((sport) => {
+          <div className="font-extrabold text-3xl mt-10">
+            <h1>{sport}</h1>
+            <button className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900">
+              Games
+            </button>
+            <button className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900">
+              Location
+            </button>
+          </div>
 
+          {sportList.map((sport) => {
             return (
               <>
                 <Link to={`sports/${sport._id}`}>
-                  <h2>{sport.sport} {sport.venue.location.barrio} </h2>
+                  <div className="flex justify-start">
+                    <div className="font-medium text-lg">
+                      <h2>{sport.venue.name}, {sport.venue.location.barrio}</h2>
+                    </div>
+
+                 
+                  </div>
                 </Link>
-                <p>Players: {sport.players.length}/{sport.numberOfPlayers}</p>
-                <p>{sport.venue.location.barrio}</p>
-                <p>{sport.date}</p>
+
+                <p className="flex justify-start">
+                  {sport.date} @ {sport.time}
+                </p>
+                <p className="flex justify-start">
+                  Attendees: {sport.players.length}/{sport.numberOfPlayers}
+                </p>
+                <br />
               </>
             );
           })}
