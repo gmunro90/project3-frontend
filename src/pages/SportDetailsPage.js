@@ -70,9 +70,9 @@ function SportDetailsPage(props) {
         </>
       ) : (
         <>
-        <img src={sport.venue.image} alt="fuck" />
-          
-       {/* <Map 
+          <img src={sport.venue.image} alt="not found" />
+
+          {/* <Map 
             venue={{
               latitude: sport.venue.location.coordinates[0],
               longitude: sport.venue.location.coordinates[1],
@@ -81,25 +81,25 @@ function SportDetailsPage(props) {
               image: sport.venue.image,
               id: sport._id,
             }}
-            
+
           ></Map>*/}
           <h1>
             {sport.sport}, {sport.venue.location.type}
           </h1>
           <p> </p>
           <p>
-            Players: {sport.players.length}/{sport.numberOfPlayers}
+            Attendees {sport.players.length}/{sport.numberOfPlayers}
           </p>
-          <p>Players: {sport.players.map((player) => player.name)}</p>
+          <p>{sport.players.map((player) => player.name)}</p>
           <p>Time: {sport.time}</p>
           <p> €{sport.price}</p>
 
           {message === "" ? (
             <button
-              className="mt-5 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md shadow-lg"
+              className="w-20 mt-5 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium rounded-md shadow-lg"
               onClick={handleSubmit}
             >
-              Join game
+              Join
             </button>
           ) : (
             <Confirmation message={[message]}></Confirmation>
