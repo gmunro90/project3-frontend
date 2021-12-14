@@ -82,6 +82,8 @@ function SportDetailsPage(props) {
             venue={{
               latitude: sport.venue.location.coordinates[0],
               longitude: sport.venue.location.coordinates[1],
+              name: sport.venue.name,
+              address: sport.venue.location.type
             }}
           ></Map>
 
