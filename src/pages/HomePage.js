@@ -61,7 +61,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[1]}`}>
             <svg
-              className="mb-2"
+              className="mb-2 ml-6"
               width="65"
               height="65"
               viewBox="0 0 65 65"
@@ -121,9 +121,9 @@ function HomePage() {
           <Link to={`/search?sport=${sport[3]}`}>
             <svg
               className="mb-2"
-              width="65"
+              width="60"
               height="65"
-              viewBox="0 0 65 73"
+              viewBox="0 0 65 75"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -147,8 +147,8 @@ function HomePage() {
           <Link to={`/search?sport=${sport[4]}`}>
             <svg
               className="mb-2"
-              width="84"
-              height="75"
+              width="80"
+              height="70"
               viewBox="0 0 84 75"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
