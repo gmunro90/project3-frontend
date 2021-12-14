@@ -12,11 +12,11 @@ export default function MultipleMap(props) {
     height: "100vh",
     latitude: 41.3874,
     longitude: 2.1686,
-    zoom: 12,
+    zoom: 11,
   });
   const [selectedVenue, setselectedVenue] = useState(null);
 
-  console.log("events", props.events[0])
+  console.log("events", props.events[0].length)
 
 
   return (
@@ -37,6 +37,9 @@ export default function MultipleMap(props) {
             key={event._id}
             latitude={event.venue.location.coordinates[0]}
             longitude={event.venue.location.coordinates[1]}
+            offsetTop={-15}
+            offsetLeft={-15}
+
           >
             <button
               className="marker-btn"

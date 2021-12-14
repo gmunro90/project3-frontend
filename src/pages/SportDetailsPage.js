@@ -15,7 +15,7 @@ function SportDetailsPage(props) {
   const { id: sportId } = useParams();
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState("")
-  const [Joined, setJoined] = useState(false)
+  const [joined, setJoined] = useState(false)
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -31,7 +31,7 @@ function SportDetailsPage(props) {
         setIsLoading(false);
       })
       .catch(console.log);
-  }, []);
+  }, [joined]);
 
   console.log("user", user);
 
