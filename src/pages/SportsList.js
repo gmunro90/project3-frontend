@@ -63,8 +63,6 @@ function SportsListPage() {
       ) : (
         <>
           {sportList.map((sport) => {
-            console.log("sport", sport);
-            console.log("players", sportList)
 
             return (
               <>

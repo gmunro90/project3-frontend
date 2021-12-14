@@ -54,7 +54,7 @@ function handleSubmit(){
     }
   )
   .then((response) => {
-    console.log(response.data)
+    console.log("message", response.data)
     
   })
   .catch(console.log);
