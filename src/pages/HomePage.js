@@ -413,9 +413,7 @@ function HomePage() {
           </Link>
         </div>
       </div>
-      <div>
-        <Link to={"/venues"}>VENUES</Link>
-      </div>
+    
      </>
   );
 }
