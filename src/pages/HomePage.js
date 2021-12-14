@@ -146,7 +146,7 @@ function HomePage() {
         <div>
           <Link to={`/search?sport=${sport[4]}`}>
             <svg
-              className="mb-2"
+              className="mb-2 mr-5"
               width="80"
               height="70"
               viewBox="0 0 84 75"
@@ -318,7 +318,7 @@ function HomePage() {
                 fill="#5F9931"
               />
             </svg>
-            Tennis
+            <div className="mr-4"> Tennis </div>
           </Link>
         </div>
 
