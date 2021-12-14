@@ -1,3 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
   margin: 0;
 }
@@ -28,32 +36,13 @@ textarea {
   margin: 10px;
 }
 
-nav {
-  background: #515f7d;
-  color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 5px;
-}
-
-nav li {
-  list-style: none;
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
-}
 
 footer {
   position: fixed;
   bottom: 0 !important;
-  background: #515f7d;
+  background: #1c6d16;
   color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
   width: 100%;
-  padding: 5px;
 }
 
 .card {

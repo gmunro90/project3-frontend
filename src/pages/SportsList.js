@@ -21,11 +21,9 @@ function SportsListPage() {
       .get(`${API_URI}/api/event`)
       .then((response) => {
         console.log("response.data", response.data);
-        setSportList(response.data);
         const filteredSport = response.data.filter(event=> event.sport === sport)
         setSportList(filteredSport)
          setIsLoading(false)
-        console.log("sportList", sportList)
       })
       .catch(console.log);
   }, [sport]);
@@ -53,7 +51,7 @@ function SportsListPage() {
   // useEffect(() => {
   //   getAllSports();
   // }, []);
-  console.log("filtered", sportList);
+  console.log("filtered", sportList.length);
 
   return (
     <div className="SportsListPage">
@@ -65,16 +63,15 @@ function SportsListPage() {
       ) : (
         <>
           {sportList.map((sport) => {
-            console.log("sport", sport);
-            console.log("players", sportList)
 
             return (
               <>
                 <Link to={`sports/${sport._id}`}>
                   <h2>{sport.sport} {sport.venue.location.barrio} </h2>
                 </Link>
-                <p>Players: {sport.players}</p>
+                <p>Players: {sport.players.length}/{sport.numberOfPlayers}</p>
                 <p>{sport.venue.location.barrio}</p>
+                <p>{sport.date}</p>
               </>
             );
           })}

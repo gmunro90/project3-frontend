@@ -8,9 +8,12 @@ const API_URI = process.env.REACT_APP_API_URI;
 
 export default function NewEvent() {
   const [formState, setFormState] = useState({
-    sport: "football",
-    numberOfPlayers: "",
+    sport: "Football",
+    numberOfPlayers: 0,
+    players: [],
     venue: "",
+    date: "",
+    time: "",
     price: 0,
   });
   const [venueList, setVenueList] = useState([]);
@@ -47,7 +50,7 @@ export default function NewEvent() {
         }
       )
       .then((respnse) => {
-        setFormState({});
+        // setFormState({});
         history.push("/");
       })
       .catch(console.log);
@@ -63,13 +66,29 @@ export default function NewEvent() {
       <h3>Add an event</h3>
 
       <form onSubmit={handleSubmit}>
-
         {/* <input
             type="text"
             name="sport"
             onChange={handleInput}         //onChange={(e) => setHeadline(e.target.value)}
             value={formState.headline}
           /> */}
+        <select
+          name="sport"
+          id="sport"
+          form="sports_form"
+          onChange={handleInput}
+          value={formState.sport}
+        >
+          <option value="Football">Football</option>
+          <option value="Beach-Volleyball">Beach Volleyball</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Tennis">Tennis</option>
+          <option value="Table-Tennis">Table-Tennis</option>
+          <option value="Padel">Padel</option>
+          <option value="Yoga">Yoga</option>
+          <option value="Accessible">Accessible</option>
+          <option value="Individual">Individual</option>
+        </select>
 
         <label>Players needed</label>
         <input
@@ -80,19 +99,7 @@ export default function NewEvent() {
         />
         <label>Sport</label>
 
-        <select
-          name="sport"
-          id="sport"
-          form="sports_form"
-          onChange={handleInput}
-          value={formState.sport}
-        >
-          <option value="football">Football</option>
-          <option value="volleyball">Volleyball</option>
-          <option value="tennis">Tennis</option>
-        </select>
         <label htmlFor="venue">Venue</label>
-
         <select
           name="venue"
           id="venue"
@@ -101,10 +108,25 @@ export default function NewEvent() {
           value={formState.venue}
         >
           {venueList.map((venue) => {
-
             return <option value={venue._id}>{venue.name}</option>;
           })}
         </select>
+
+        <label>Date</label>
+        <input
+          type="date"
+          name="date"
+          onChange={handleInput} // onChange={(e) => setPrice(e.target.value)}
+          value={formState.date}
+        />
+
+        <label>Time</label>
+        <input
+          type="time"
+          name="time"
+          onChange={handleInput} // onChange={(e) => setPrice(e.target.value)}
+          value={formState.time}
+        />
 
         <label>Price</label>
         <input

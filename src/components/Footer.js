@@ -3,18 +3,32 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-<footer>
+    <footer>
+      <div className="flex justify-between">
         <Link to="/">
-          <button>home</button>
+          <button>
+            <img className="ml-1" src="/assets/running.png" alt="running-man" />
+            <div className="text-white">Home</div>
+          </button>
         </Link>
         <Link to="/new">
-          <button>add</button>
+          <button>
+            <img className="mb-2" src="/assets/+.png" alt="plus-sign" />
+            <div className="text-white">Add</div>
+          </button>
         </Link>
         <Link to="/profile">
-          <button>my profile </button>
+          <button>
+            <img
+              className="mb-1 ml-1"
+              src="/assets/coolicon.png"
+              alt="profile-icon"
+            />
+            <div className="text-white">Profile</div>
+          </button>
         </Link>
-
-</footer>
+      </div>
+    </footer>
   );
 }
 
