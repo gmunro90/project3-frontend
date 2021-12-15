@@ -108,7 +108,11 @@ function SportDetailsPage(props) {
           <p>
             Attendees {sport.players.length}/{sport.numberOfPlayers}
           </p>
-          <p>{sport.players.map((player) => player.name)}</p>
+          <div>{sport.players.map((player) => 
+          <ul>
+            <li>{player.name}</li>
+          </ul>
+         )}</div>
           <p>Time: {sport.time}</p>
           <p> €{sport.price}</p>
 
