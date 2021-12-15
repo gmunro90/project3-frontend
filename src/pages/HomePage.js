@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import events from "../events.json";
-import Venues from "./Venues";
 
 function HomePage() {
   const sport = [

@@ -65,7 +65,7 @@ function SportDetailsPage(props) {
     <div className="SportDetails">
       {isLoading ? (
         <>
-          <img src={loader} alt="loading..." width="130" height="130" />
+          <img className="loading" src={loader} alt="loading..." width="130" height="130" />
           <p>Loading...</p>
         </>
       ) : (
