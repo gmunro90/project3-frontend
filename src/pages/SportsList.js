@@ -75,7 +75,7 @@ const handleOnClick = (name) => {
 
   return (
     <div className="SportsListPage">
-    <button name="list" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e) =>handleOnClick(e.target.name)}>Events</button>
+    <button name="events" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e) =>handleOnClick(e.target.name)}>Events</button>
     <button name="map" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e)=> handleOnClick(e.target.name)}>Map</button>
     
 
