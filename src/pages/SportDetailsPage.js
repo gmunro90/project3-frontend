@@ -4,6 +4,7 @@ import axios from "axios";
 import loader from "../running-man.gif";
 import { AuthContext } from "./../context/auth.context";
 import Confirmation from "../components/Confirmation";
+import { useHistory } from "react-router";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -11,10 +12,12 @@ function SportDetailsPage(props) {
   const [sport, setSport] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
-  const { user } = useContext(AuthContext);
-  const [message, setMessage] = useState("")
-  const [joined, setJoined] = useState(false)
+  const { user, isLoggedIn } = useContext(AuthContext);
+  const [message, setMessage] = useState("");
+  const [joined, setJoined] = useState(false);
   const [removed, setRemoved] = useState(false);
+
+  const history = useHistory()
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -35,6 +38,8 @@ function SportDetailsPage(props) {
   console.log("user", user);
 
   function handleSubmit() {
+    
+    if (!isLoggedIn) return history.push("/login");
     const localJWTToken = localStorage.getItem("authToken");
 
     axios

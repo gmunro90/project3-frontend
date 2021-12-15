@@ -11,7 +11,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 function SportsListPage() {
   const [sportList, setSportList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [userClicked, setUserClicked] = useState("list");
+  const [userClicked, setUserClicked] = useState("events");
   const { search } = useLocation();
   const { sport } = queryString.parse(search);
 
@@ -27,8 +27,8 @@ function SportsListPage() {
 
 const handleOnClick = (name) => {
   console.log(name)
-  if(name ==="list"){
-    setUserClicked("list")
+  if(name ==="events"){
+    setUserClicked("events")
   }else if(name === "map"){
     setUserClicked("map")
   }
@@ -86,7 +86,7 @@ const handleOnClick = (name) => {
         </>
       ) : (
         <>
-          {userClicked === "list" ? (
+          {userClicked === "events" ? (
             <>
            
 
