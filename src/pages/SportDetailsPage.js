@@ -16,6 +16,7 @@ function SportDetailsPage(props) {
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState("")
   const [joined, setJoined] = useState(false)
+    const [removed, setRemoved] = useState(false);
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -54,6 +55,23 @@ function SportDetailsPage(props) {
       .catch(console.log);
   }
 
+  function deletedEvent() {
+    const localJWTToken = localStorage.getItem("authToken");
+
+    axios
+      .put(
+        `${API_URI}/api/remove/${sportId}/${user._id}`,
+        { user },
+        {
+          headers: { Authorization: `Bearer ${localJWTToken}` },
+        }
+      )
+      .then((response) => {
+        console.log("message", response.data);
+        setRemoved(true);
+      })
+      .catch(console.log);
+  }
   // useEffect(() => {
   //   const filteredSport = events.filter((event) => event._id === sportId);
   //   setSport(filteredSport[0]);
@@ -94,11 +112,12 @@ function SportDetailsPage(props) {
           </Link>
           {message === "" ? (
             <button onClick={handleSubmit}>Join game</button>
-
+     
           ) : (
-
+<>
           <Confirmation message={[message]}></Confirmation>
-
+      <button onClick={deletedEvent}>delete</button>
+      </>
           )}
           
         </>
