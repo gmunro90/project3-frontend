@@ -33,29 +33,59 @@ function SignupPage(props) {
 
   return (
     <div className="SignupPage">
-      <h1>Sign Up</h1>
+      <div
+        className="flex flex-col
+          bg-white
+          shadow-md
+          px-4
+          sm:px-6
+          md:px-8
+          lg:px-10
+          py-8
+          rounded-3xl
+          w-50
+          max-w-md
+        "
+      >
+        <form onSubmit={handleSignupSubmit}>
+          <label>Email:</label>
+          <input
+            className="bg-gray-300"
+            type="text"
+            name="email"
+            value={email}
+            onChange={handleEmail}
+          />
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+          <label>Password:</label>
+          <input
+            className="bg-gray-300"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePassword}
+          />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-
-        <button type="submit">Sign Up</button>
-      </form>
-
+          <label>Name:</label>
+          <input
+            className="bg-gray-300"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleName}
+          />
+          <br />
+          <button
+            className="shadow-lg mt-4 bg-gray-400 rounded-2xl"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </form>
+      </div>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
+      <p>Already a user?</p>
       <Link to={"/login"}> Login</Link>
     </div>
   );

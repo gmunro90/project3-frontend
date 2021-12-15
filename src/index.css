@@ -1,7 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 h1,
 h2,
@@ -30,17 +29,20 @@ pre {
 }
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   margin: 0;
 }
 
-
 a {
   list-style: none;
   color: black;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 button,
@@ -64,13 +66,12 @@ textarea {
   margin: 10px;
 }
 
-
 footer {
   position: fixed;
   bottom: 0 !important;
   background: #5f9932;
   color: white;
-  width: 100%;
+  width: 100vw;
 }
 
 .card {
@@ -88,6 +89,7 @@ footer {
   margin-left: 5px;
 }
 
+/*
 .EditProjectPage,
 .AddProject,
 .AddTask,
@@ -125,7 +127,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .AddTask button,
 .AddProject button {

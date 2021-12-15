@@ -1,4 +1,3 @@
- 
 import { useState, useEffect } from "react";
 import axios from "axios";
 import queryString from "query-string";
@@ -13,7 +12,7 @@ const API_URI = process.env.REACT_APP_API_URI;
 function SportsListPage() {
   const [sportList, setSportList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [userClicked, setUserClicked] = useState("list")
+  const [userClicked, setUserClicked] = useState("list");
   const { search } = useLocation();
   const { sport } = queryString.parse(search);
 
@@ -80,56 +79,59 @@ const handleOnClick = (name) => {
         </>
       ) : (
         <>
-        {userClicked === "list" ? (
-        <>
-          
-          <div className="font-extrabold text-3xl mt-10">
-            <h1>{sport}</h1>
-            <Link to={`events/${sport._id}`}>
-              <button className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900">
-                Games
-              </button>
-            </Link>
-            <Link to={`venues/${sport._id}`}>
-              {" "}
-              <button className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900">
-                Location
-              </button>
-            </Link>
-          </div>
+          {userClicked === "list" ? (
+            <>
+              <div className="font-extrabold text-3xl mt-10">
+                <h1>{sport}</h1>
 
-          {sportList.map((sport) => {
-            return (
-              <>
-                <div className="border-solid border-2">
-                  <Link to={`sports/${sport._id}`}>
-                    <div className="flex justify-start ml-3">
-                      <div className="font-medium text-xl mt-5">
-                        <h2>
-                          {sport.venue.name}, {sport.venue.location.barrio}
-                        </h2>
-                      </div>
+                <button
+                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
+                  onClick={handleOnClick}
+                >
+                  MAP
+                </button>
+
+                <button
+                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
+                  onClick={handleOnClick}
+                >
+                  LIST
+                </button>
+              </div>
+
+              {sportList.map((sport) => {
+                return (
+                  <>
+                    <div className="border-solid border-2">
+                      <Link to={`sports/${sport._id}`}>
+                        <div className="flex justify-start ml-3">
+                          <div className="font-medium text-xl mt-5">
+                            <h2>
+                              {sport.venue.name}, {sport.venue.location.barrio}
+                            </h2>
+                          </div>
+                        </div>
+                      </Link>
+
+                      <p className="flex justify-start ml-3">
+                        {sport.date} @ {sport.time}
+                      </p>
+                      <p className="flex justify-start ml-3">
+                        Attendees: {sport.players.length}/
+                        {sport.numberOfPlayers}
+                      </p>
+                      <br />
                     </div>
-                  </Link>
-
-                  <p className="flex justify-start ml-3">
-                    {sport.date} @ {sport.time}
-                  </p>
-                  <p className="flex justify-start ml-3">
-                    Attendees: {sport.players.length}/{sport.numberOfPlayers}
-                  </p>
-                  <br />
-                </div>
-              </>
-            );
-          })}
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <MultipleMap events={[sportList]}></MultipleMap>
+          )}{" "}
         </>
-        ) : (
-          <MultipleMap events={[sportList]}></MultipleMap>
-        )} </>
       )}
     </div>
-    
   );
 }
 export default SportsListPage;
