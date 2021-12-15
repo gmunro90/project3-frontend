@@ -100,7 +100,6 @@ function SportDetailsPage(props) {
               id: sport._id,
             }}
 
-<<<<<<< HEAD
           ></Map>*/}
           <h1>
             {sport.sport}, {sport.venue.location.type}
@@ -122,19 +121,6 @@ function SportDetailsPage(props) {
             </button>
           ) : (
             <Confirmation message={[message]}></Confirmation>
-=======
-          <Link to={`/`}>
-            <button>Home</button>
-          </Link>
-          {message === "" ? (
-            <button onClick={handleSubmit}>Join game</button>
-     
-          ) : (
-<>
-          <Confirmation message={[message]}></Confirmation>
-      <button onClick={deletedEvent}>delete</button>
-      </>
->>>>>>> profile
           )}
         </>
       )}
