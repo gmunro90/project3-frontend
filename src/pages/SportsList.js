@@ -16,13 +16,17 @@ function SportsListPage() {
   const { search } = useLocation();
   const { sport } = queryString.parse(search);
 
-  const handleOnClick = () => {
-    if (userClicked === "list") {
-      setUserClicked("map");
-    } else if (userClicked === "map") {
-      setUserClicked("list");
-    }
-  };
+const handleOnClick = (name) => {
+  
+  console.log(name)
+  if(name ==="list"){
+    setUserClicked("list")
+  }else if(name === "map"){
+    setUserClicked("map")
+  }
+}
+
+
 
   useEffect(() => {
     axios
@@ -64,9 +68,13 @@ function SportsListPage() {
 
   return (
     <div className="SportsListPage">
+    <button name="map" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e) =>handleOnClick(e.target.name)}>MAP</button>
+    <button name="list" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e)=> handleOnClick(e.target.name)}>LIST</button>
+    
+
       {isLoading ? (
         <>
-          <img src={loader} alt="loading..." width="130" height="130" />
+          <img className="loading" src={loader} alt="loading..." width="130" height="130" />
           <p>Loading...</p>
         </>
       ) : (
@@ -77,15 +85,17 @@ function SportsListPage() {
                 <h1>{sport}</h1>
 
                 <button
+                name="map"
                   className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
-                  onClick={handleOnClick}
+                  onClick={(e) =>handleOnClick(e.target.name)}
                 >
                   MAP
                 </button>
 
                 <button
+                name="list"
                   className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
-                  onClick={handleOnClick}
+                  onClick={(e)=> handleOnClick(e.target.name)}
                 >
                   LIST
                 </button>

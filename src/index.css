@@ -139,7 +139,16 @@ footer {
   background-color: #dfeef9;
 }
 
-/*.marker-btn img {
-  width: 50px;
-  height: 40px;
-}*/
+.marker-btn img {
+  width: 40px;
+  height: 30px;
+}
+.loading{
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  margin-top: 40%
+}
+
+
