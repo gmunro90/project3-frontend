@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import Map from "../components/Map";
 import axios from "axios";
 import loader from "../running-man.gif";
 import { AuthContext } from "./../context/auth.context";
@@ -16,7 +14,7 @@ function SportDetailsPage(props) {
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState("")
   const [joined, setJoined] = useState(false)
-    const [removed, setRemoved] = useState(false);
+  const [removed, setRemoved] = useState(false);
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -83,7 +81,13 @@ function SportDetailsPage(props) {
     <div className="SportDetails">
       {isLoading ? (
         <>
-          <img className="loading" src={loader} alt="loading..." width="130" height="130" />
+          <img
+            className="loading"
+            src={loader}
+            alt="loading..."
+            width="130"
+            height="130"
+          />
           <p>Loading...</p>
         </>
       ) : (
@@ -108,13 +112,15 @@ function SportDetailsPage(props) {
           <p>
             Attendees {sport.players.length}/{sport.numberOfPlayers}
           </p>
-          <div>{sport.players.map((player) => 
-          <ul>
-            <li>{player.name}</li>
-          </ul>
-         )}</div>
+          <div>
+            {sport.players.map((player) => (
+              <ul>
+                <li>{player.name}</li>
+              </ul>
+            ))}
+          </div>
           <p>Time: {sport.time}</p>
-          <p> €{sport.price}</p>
+          <p> {sport.price}€</p>
 
           {message === "" ? (
             <button

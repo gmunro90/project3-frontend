@@ -1,23 +1,21 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router";
 import queryString from "query-string";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import { useState, useEffect } from "react";
 import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "./../context/auth.context";
-import Venues from "./Venues";
+
 
 function ProfilePage(props) {
   const [userGamesList, setUserGamesList] = useState([]);
-  const [venue, setVenue] = useState({});
-  const [sport, setSport] = useState({});
   const API_URI = process.env.REACT_APP_API_URI;
   const { user, logOutUser } = useContext(AuthContext);
   const [removed, setRemoved] = useState(true);
+  const { search } = useLocation();
   const [userClicked, setUserClicked] = useState("MYGAMES");
-  //const { id: eventId } = useParams();
-  // const eventId = props.match.params.id;
+  const { sport } = queryString.parse(search);
 
   const handleOnClick = () => {
     if (userClicked === "LOGOUT") {
@@ -69,23 +67,27 @@ function ProfilePage(props) {
       <>
         {userGamesList.map((event) => {
           return (
-            <ul>
-              <p>{event.sport}</p>
-              <p>
-                Attendees: {event.players.length}/{event.numberOfPlayers}
-              </p>
-              <p>
-                {event.players.map((player) => {
-                  return <p>{player.name}</p>;
-                })}
-              </p>
-              <p> {event.venue.name}</p>
+            <div>
+              <Link to={`sports/${event._id}`}>
+                <ul>
+                  <p>{event.sport}</p>
+                  <p>
+                    Attendees: {event.players.length}/{event.numberOfPlayers}
+                  </p>
+                  <p>
+                    {event.players.map((player) => {
+                      return <p>{player.name}</p>;
+                    })}
+                  </p>
+                  <p> {event.venue.name}</p>
 
-              <p>{event.date}</p>
-              <p>{event.time}</p>
-              <p>{event.price}</p>
+                  <p>{event.date}</p>
+                  <p>{event.time}</p>
+                  <p>{event.price}€</p>
+                </ul>
+              </Link>
               <button onClick={() => deletedEvent(event._id)}>Leave</button>
-            </ul>
+            </div>
           );
         })}
       </>
