@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import { Link } from "react-router-dom";
 
 //import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -64,12 +65,12 @@ export default function MultipleMap(props) {
           >
             <div>
             <div>
-            <img className="popup-img"src={selectedVenue.venue.image} alt="picture of venue"/>
+            <img className="popup-img"src={selectedVenue.venue.image} alt=""/>
               <h2>{selectedVenue.venue.name}</h2>
               <p>{selectedVenue.venue.location.type}</p>
               <p>{selectedVenue.date}</p>
               <p>{selectedVenue.time}</p>
-
+<Link to={`sports/${selectedVenue._id}`}>more info</Link>
 
             </div>
             </div>

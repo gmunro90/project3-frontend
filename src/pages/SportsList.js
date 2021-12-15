@@ -17,11 +17,13 @@ function SportsListPage() {
   const { search } = useLocation();
   const { sport } = queryString.parse(search);
 
-const handleOnClick = () => {
-  if(userClicked ==="list"){
-    setUserClicked("map")
-  }else if(userClicked === "map"){
+const handleOnClick = (name) => {
+  
+  console.log(name)
+  if(name ==="list"){
     setUserClicked("list")
+  }else if(name === "map"){
+    setUserClicked("map")
   }
 }
 
@@ -67,8 +69,8 @@ const handleOnClick = () => {
 
   return (
     <div className="SportsListPage">
-    <button onClick={handleOnClick}>MAP</button>
-    <button onClick={handleOnClick}>LIST</button>
+    <button name="map" onClick={(e) =>handleOnClick(e.target.name)}>MAP</button>
+    <button name="list" onClick={(e)=> handleOnClick(e.target.name)}>LIST</button>
     
 
       {isLoading ? (
