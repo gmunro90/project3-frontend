@@ -90,7 +90,7 @@ export default function NewEvent() {
           <option value="Individual">Individual</option>
         </select>
 
-        <label>Players needed</label>
+        <label>Attendees needed</label>
         <input
           type="number"
           name="numberOfPlayers"

@@ -1,21 +1,22 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router";
 import queryString from "query-string";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import { useState, useEffect } from "react";
 import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "./../context/auth.context";
+
 
 function ProfilePage(props) {
   const [userGamesList, setUserGamesList] = useState([]);
   const API_URI = process.env.REACT_APP_API_URI;
   const { user, logOutUser } = useContext(AuthContext);
   const [removed, setRemoved] = useState(true);
+  const { search } = useLocation();
   const [userClicked, setUserClicked] = useState("MYGAMES");
-  //const { id: eventId } = useParams();
-  // const eventId = props.match.params.id;
- 
+  const { sport } = queryString.parse(search);
+
   const handleOnClick = () => {
     if (userClicked === "LOGOUT") {
       setUserClicked("MYGAMES");
@@ -23,7 +24,7 @@ function ProfilePage(props) {
       setUserClicked("LOGOUT");
     }
   };
-  
+
   useEffect(() => {
     const localJWTToken = localStorage.getItem("authToken");
 
@@ -56,7 +57,7 @@ function ProfilePage(props) {
       })
       .catch(console.log);
   }
-
+  console.log("user game venue", userGamesList);
   return (
     <div>
       <h1>Welcome {user.name}!</h1>
@@ -66,23 +67,32 @@ function ProfilePage(props) {
       <>
         {userGamesList.map((event) => {
           return (
-            <>
-              <p>{event.sport}</p>
-              <p>
-                Players: {event.players.length}/{event.numberOfPlayers}
-              </p>
-              <p>{event.venue}</p>
-              <p>{event.date}</p>
-              <p>{event.time}</p>
-              <p>{event.price}</p>
-              <button onClick={() => deletedEvent(event._id)}>delete</button>
-            </>
+            <div>
+              <Link to={`sports/${event._id}`}>
+                <ul>
+                  <p>{event.sport}</p>
+                  <p>
+                    Attendees: {event.players.length}/{event.numberOfPlayers}
+                  </p>
+                  <p>
+                    {event.players.map((player) => {
+                      return <p>{player.name}</p>;
+                    })}
+                  </p>
+                  <p> {event.venue.name}</p>
+
+                  <p>{event.date}</p>
+                  <p>{event.time}</p>
+                  <p>{event.price}€</p>
+                </ul>
+              </Link>
+              <button onClick={() => deletedEvent(event._id)}>Leave</button>
+            </div>
           );
         })}
       </>
     </div>
   );
 }
-export default ProfilePage;
 
-///profile/:userId/usergames
+export default ProfilePage;

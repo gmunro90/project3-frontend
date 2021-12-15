@@ -3,7 +3,6 @@ import axios from "axios";
 import queryString from "query-string";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
 import loader from "../running-man.gif";
 import MultipleMap from "../components/MultipleMap";
 
@@ -12,20 +11,28 @@ const API_URI = process.env.REACT_APP_API_URI;
 function SportsListPage() {
   const [sportList, setSportList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [userClicked, setUserClicked] = useState("list");
+  const [userClicked, setUserClicked] = useState("events");
   const { search } = useLocation();
   const { sport } = queryString.parse(search);
 
-const handleOnClick = (name) => {
+/*const handleOnClick = (name) => {
   
   console.log(name)
-  if(name ==="list"){
-    setUserClicked("list")
+  if(name ==="events"){
+    setUserClicked("events")
+  }else if(name === "map"){
+    setUserClicked("map")
+  }
+}*/
+
+const handleOnClick = (name) => {
+  console.log(name)
+  if(name ==="events"){
+    setUserClicked("events")
   }else if(name === "map"){
     setUserClicked("map")
   }
 }
-
 
 
   useEffect(() => {
@@ -68,8 +75,8 @@ const handleOnClick = (name) => {
 
   return (
     <div className="SportsListPage">
-    <button name="map" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e) =>handleOnClick(e.target.name)}>MAP</button>
-    <button name="list" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e)=> handleOnClick(e.target.name)}>LIST</button>
+    <button name="events" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e) =>handleOnClick(e.target.name)}>Events</button>
+    <button name="map" className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5" onClick={(e)=> handleOnClick(e.target.name)}>Map</button>
     
 
       {isLoading ? (
@@ -79,27 +86,9 @@ const handleOnClick = (name) => {
         </>
       ) : (
         <>
-          {userClicked === "list" ? (
+          {userClicked === "events" ? (
             <>
-              <div className="font-extrabold text-3xl mt-10">
-                <h1>{sport}</h1>
-
-                <button
-                name="map"
-                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
-                  onClick={(e) =>handleOnClick(e.target.name)}
-                >
-                  MAP
-                </button>
-
-                <button
-                name="list"
-                  className="bg-transparent text-black-300 font-semibold hover:text-black py-2 px-4 border border-black-900 shadow-lg mb-5"
-                  onClick={(e)=> handleOnClick(e.target.name)}
-                >
-                  LIST
-                </button>
-              </div>
+           
 
               {sportList.map((sport) => {
                 return (
@@ -136,4 +125,5 @@ const handleOnClick = (name) => {
     </div>
   );
 }
+
 export default SportsListPage;

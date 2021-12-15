@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import Map from "../components/Map";
 import axios from "axios";
 import loader from "../running-man.gif";
 import { AuthContext } from "./../context/auth.context";
 import Confirmation from "../components/Confirmation";
+import { useHistory } from "react-router";
 
 const API_URI = process.env.REACT_APP_API_URI;
 
@@ -13,10 +12,12 @@ function SportDetailsPage(props) {
   const [sport, setSport] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id: sportId } = useParams();
-  const { user } = useContext(AuthContext);
-  const [message, setMessage] = useState("")
-  const [joined, setJoined] = useState(false)
-    const [removed, setRemoved] = useState(false);
+  const { user, isLoggedIn } = useContext(AuthContext);
+  const [message, setMessage] = useState("");
+  const [joined, setJoined] = useState(false);
+  const [removed, setRemoved] = useState(false);
+
+  const history = useHistory()
 
   // const getProject = () => {
   //   // Get the token from the localStorage
@@ -37,6 +38,8 @@ function SportDetailsPage(props) {
   console.log("user", user);
 
   function handleSubmit() {
+    
+    if (!isLoggedIn) return history.push("/login");
     const localJWTToken = localStorage.getItem("authToken");
 
     axios
@@ -83,7 +86,13 @@ function SportDetailsPage(props) {
     <div className="SportDetails">
       {isLoading ? (
         <>
-          <img className="loading" src={loader} alt="loading..." width="130" height="130" />
+          <img
+            className="loading"
+            src={loader}
+            alt="loading..."
+            width="130"
+            height="130"
+          />
           <p>Loading...</p>
         </>
       ) : (
@@ -108,9 +117,15 @@ function SportDetailsPage(props) {
           <p>
             Attendees {sport.players.length}/{sport.numberOfPlayers}
           </p>
-          <p>{sport.players.map((player) => player.name)}</p>
+          <div>
+            {sport.players.map((player) => (
+              <ul>
+                <li>{player.name}</li>
+              </ul>
+            ))}
+          </div>
           <p>Time: {sport.time}</p>
-          <p> €{sport.price}</p>
+          <p> {sport.price}€</p>
 
           {message === "" ? (
             <button
