@@ -8,16 +8,42 @@ function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [profileImage, setprofileImage] = useState("");
+  const [uploadImage, setUploadImage] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
 
+  function handleFileInputChange(e) {
+    const file = e.target.files[0];
+    const fileFormData = new FormData();
+    fileFormData.append("imageUrl", file);
+    axios
+      .post(`${API_URI}/api/upload`, fileFormData)
+      .then((res) => {
+        console.log("iaugprghahvoaisare >>>>>>>", res);
+        setUploadImage(file.name || "File name missing");
+        setprofileImage(res.data.secure_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  /*  function previewFile(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  } */
+
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, profileImage };
 
     // Make an axios request to the API
     // If POST request is successful redirect to login page
@@ -74,14 +100,26 @@ function SignupPage(props) {
             value={name}
             onChange={handleName}
           />
+
+          <label>Picture</label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileInputChange}
+            value={uploadImage.name}
+          />
           <br />
           <button
             className="shadow-lg mt-4 bg-gray-400 rounded-2xl"
             type="submit"
+            value=""
           >
             Sign Up
           </button>
         </form>
+        {profileImage && (
+          <img src={profileImage} alt="chosen" style={{ height: "300px" }} />
+        )}
       </div>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
