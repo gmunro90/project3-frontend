@@ -36,13 +36,11 @@ function SignupPage(props) {
       <div
         className="flex flex-col
           bg-white
-          shadow-md
           px-4
           sm:px-6
           md:px-8
           lg:px-10
-          py-8
-          rounded-3xl
+          py-20
           w-50
           max-w-md
         "
@@ -50,7 +48,7 @@ function SignupPage(props) {
         <form onSubmit={handleSignupSubmit}>
           <label>Email:</label>
           <input
-            className="bg-gray-300"
+            className="bg-gray-300 shadow-sm"
             type="text"
             name="email"
             value={email}
@@ -59,7 +57,7 @@ function SignupPage(props) {
 
           <label>Password:</label>
           <input
-            className="bg-gray-300"
+            className="bg-gray-300 shadow-sm"
             type="password"
             name="password"
             value={password}
@@ -68,7 +66,7 @@ function SignupPage(props) {
 
           <label>Name:</label>
           <input
-            className="bg-gray-300"
+            className="bg-gray-300 shadow-sm"
             type="text"
             name="name"
             value={name}
@@ -86,7 +84,10 @@ function SignupPage(props) {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already a user?</p>
-      <Link to={"/login"}> Login</Link>
+      <Link className="font-semibold underline" to={"/login"}>
+        {" "}
+        Login
+      </Link>
     </div>
   );
 }
